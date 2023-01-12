@@ -2,26 +2,42 @@
 <html class="html">
   <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <title>Rock! Paper! Scissors!</title>
   </head>
-  <body> 
-    <aside class="left-side">
-      <h1>Player 🤓</h1>
-      <h2>Wins:</h2>
-    </aside>
-    <section class="headers">
-      <h1>Rock! Paper! Scissors!</h1>
-      <h2>Choose your fighter!</h2>
+  <body class="body">
+    <section class="left-side">
+      <p>Player 🤓</p>
     </section>
-      <section class="game-section">
-        game icons here
+    <section class="game-section">
+      <section class="game-section-titles">
+        <h1>Rock, Paper, Scissors!</h1>
+        <h2>Choose your fighter!!!</h2>
       </section>
-    <aside class="right-side">
-      <h1>Computer 👾</h1>
-      <h2>Wins:</h2>
-    </aside>
+      <section class="game-section-icons">
+        <button class="choose-game button">
+          <h3>CLASSIC
+            <br>
+            rock > scissors
+            <br>
+            paper > rock
+            <br>
+            scissors > paper
+          </h3>
+        </button>
+        <button class="choose-game button">
+          <h3>DIFFICULT <br>
+           difficult rules
+          </h3>
+        </button>
+      </section>
+    </section>
+    <section class="right-side">
+      <p>Computer 💻</p>
+    </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>
     <script src="./main.js"></script>
