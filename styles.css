@@ -32,7 +32,8 @@
 }
 
 .game-section-icons {
-  height: 30%;
+  height: fit-content;
+  
 }
 
 h1 {
@@ -47,6 +48,10 @@ h2 {
 p {
   font-size: larger;
   text-align: center;
+}
+
+.buttons {
+  background: aqua;
 }
 
 .hidden {
