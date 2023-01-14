@@ -14,9 +14,4 @@ class Player {
   };
  };
 
-    // Always human vs comp which is two instances of player
-    // can access game properties 
-    // if the player name is strictly equal to game this.turn
-      // THEN this.turn is assigned to that first players name
-    // If NOT then it is the opponent's turn
  

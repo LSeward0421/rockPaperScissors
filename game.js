@@ -4,15 +4,13 @@ class Game {
     this.gameType; 
     this.turn;
     this.winner;
-
-    // gametype, turn and winners remain unassigned 
     
   }
   decideWinner() {
     console.log(this.players[0].name, this.players[0].fighter);
     console.log(this.players[1].name, this.players[1].fighter);
     if (this.players[0].fighter === this.players[1].fighter) {
-      console.log(`we have a draw`);
+      this.winner = `No one`
     } else if (this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Scissors' ||
     this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Iguana' ||
     this.players[0].fighter === 'Paper' && this.players[1].fighter === 'Rock' ||
