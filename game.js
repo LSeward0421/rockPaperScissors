@@ -24,17 +24,22 @@ class Game {
     this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Scissors' ||
     this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Rock'
     ) {
-      this.players[0].wins++;
-      console.log(`${this.players[0].emoji} ${this.players[0].name} WON!!!`);
+      this.players[0].numWins++;
+      this.winner = this.players[0].name;
+      console.log(`${this.players[0].token} ${this.players[0].name} WON!!!`);
     } else {
-      this.players[1].wins++;
-      console.log(`${this.players[1].emoji} ${this.players[1].name} WON!!!`);
+      this.players[1].numWins++;
+      this.winner = this.players[1].name
+      console.log(`${this.players[1].token} ${this.players[1].name} WON!!!`);
 
     };
       console.log(this.players[0].numWins);
       console.log(this.players[1].numWins);
   };
   resetBoard() {
+    this.players[0].numWins = 0;
+    this.players[1].numWins = 0;
+
     // go back to main page view with classic and difficult options (using hide?)
     // hide change game btn
     // hide all images of fighters
