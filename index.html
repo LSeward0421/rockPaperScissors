@@ -10,9 +10,10 @@
   </head>
   <body>
     <section class="left-side">
-      <p>`${game.players[0].token}`<br>
-      `${game.players[0].name}`<br>
-      `${game.players[0].numWins}`
+      <p><span id="player1Token"></span><br>
+      <span id="player1Name"></span><br>
+      Wins: <span id="player1Wins"></span>
+      </p>
     </section>
     <section class="game-section">
       <section class="game-section-titles">
@@ -46,9 +47,10 @@
       </section>
     </section>
     <section class="right-side">
-      <p>`${game.players[0].token}`<br>
-         `${game.players[0].name}`<br>
-         `${game.players[0].numWins}`<br>
+      <p><span id="player2Token"></span><br>
+        <span id="player2Name"></span><br>
+        Wins: <span id="player2Wins"></span>
+        </p>
     </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>

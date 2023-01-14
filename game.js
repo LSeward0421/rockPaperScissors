@@ -9,8 +9,8 @@ class Game {
     
   }
   decideWinner() {
-    // console.log(this.players[0].name, this.players[0].fighter);
-    // console.log(this.players[1].name, this.players[1].fighter);
+    console.log(this.players[0].name, this.players[0].fighter);
+    console.log(this.players[1].name, this.players[1].fighter);
     if (this.players[0].fighter === this.players[1].fighter) {
       console.log(`we have a draw`);
     } else if (this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Scissors' ||
