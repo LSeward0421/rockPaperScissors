@@ -5,7 +5,11 @@ var computer = new Player({ name: 'Computer', emoji: '👾' });
 var game = new Game();
 var classicGameBtn = document.getElementById('classicGameBtn');
 var difficultGameBtn = document.getElementById('difficultGameBtn');
-var chooseFighterTitle = document.getElementById('chooseFighterSubheader');
+var chooseFighterTitle = document.getElementById
+('chooseFighterSubheader');
+var classicFighters = document.getElementById('classicFighters');
+var difficultFighters = document.getElementById('difficultFighters');
+// create vars for each icon image
 
 // event listeners 👇
 
@@ -17,7 +21,8 @@ difficultGameBtn.addEventListener('click', function() {
  startGameType('difficult');
   });
   
-  
+// create event listeners for each icon
+// create helper functions for Dom display
 
 
 // need to add load page -> generate player data, display player data
@@ -37,13 +42,17 @@ function generatePlayerData() {
 
 function startGameType(gameType) {
   game.gameType = gameType;
-  chooseFighterTitle.classList.toggle('hidden')
-  hide(difficultGameBtn);
-  hide(classicGameBtn);
+  toggle(chooseFighterTitle);
+  if (gameType === 'difficult') {
+    toggle(difficultFighters);
+  } 
+  toggle(classicFighters);
+  toggle(difficultGameBtn);
+  toggle(classicGameBtn);
 }
 
-function hide(element) {
-  element.classList.add('hidden');
+function toggle(element) {
+  element.classList.toggle('hidden');
 }
 
 function updateScoreboard() {
