@@ -37,6 +37,9 @@ class Game {
       console.log(this.players[1].numWins);
   };
   resetBoard() {
+    this.players[0].numWins = 0;
+    this.players[1].numWins = 0;
+
     // go back to main page view with classic and difficult options (using hide?)
     // hide change game btn
     // hide all images of fighters
