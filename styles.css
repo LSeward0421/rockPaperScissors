@@ -56,6 +56,19 @@ p {
   background: aqua;
 }
 
+img {
+  width: 200px;
+  height: auto;
+  margin: 10px;
+}
+
+#classicFighters, #difficultFighters {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  margin: 20px;
+}
+
 .hidden {
   display: none;
 }

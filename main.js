@@ -3,8 +3,22 @@
 var human = new Player({ name: 'Human', emoji: '😎' });
 var computer = new Player({ name: 'Computer', emoji: '👾' });
 var game = new Game();
+var classicGameBtn = document.getElementById('classicGameBtn');
+var difficultGameBtn = document.getElementById('difficultGameBtn');
+var chooseFighterTitle = document.getElementById('chooseFighterSubheader');
 
 // event listeners 👇
+
+classicGameBtn.addEventListener('click', function() {
+startGameType('classic');
+});
+
+difficultGameBtn.addEventListener('click', function() {
+ startGameType('difficult');
+  });
+  
+  
+
 
 // need to add load page -> generate player data, display player data
 
@@ -19,6 +33,17 @@ function generatePlayerData() {
   game.players.push(human);
   game.players.push(computer);
   console.log(game.players);
+}
+
+function startGameType(gameType) {
+  game.gameType = gameType;
+  chooseFighterTitle.classList.toggle('hidden')
+  hide(difficultGameBtn);
+  hide(classicGameBtn);
+}
+
+function hide(element) {
+  element.classList.add('hidden');
 }
 
 function updateScoreboard() {

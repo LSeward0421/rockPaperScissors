@@ -18,10 +18,21 @@
     <section class="game-section">
       <section class="game-section-titles">
         <h1>Rock, Paper, Scissors!</h1>
-        <h2>Choose your fighter!!!</h2>
+        <h2 class='hidden' id="chooseFighterSubheader">Choose your fighter!!!</h2>
+      </section>
+      <section class="game-section-fighters">
+        <div class="hidden" id="classicFighters">
+          <img id="Rock" src="src/happy-rocks.png" alt="Happy Rocks Image">
+          <img id="Paper" src="src/lines-paper.png" alt="Lined Paper Image">
+          <img id="Scissors" src="src/happy-scissors.png" alt="Happy Scissors Image">
+        </div>
+        <div class="hidden" id="difficultFighters">
+          <img id="Iguana" src="src/iguana.png" alt="Iguana Image">
+          <img id="Alien" src="src/happy-alien.png" alt="Happy Alien Image">
+        </div>
       </section>
       <section class="game-section-icons">
-        <button class="choose-game button">
+        <button class="choose-game button" id="classicGameBtn">
           <h3>CLASSIC
             <br>
             rock > scissors
@@ -31,7 +42,7 @@
             scissors > paper
           </h3>
         </button>
-        <button class="choose-game button">
+        <button class="choose-game button" id="difficultGameBtn">
           <h3>DIFFICULT <br>
            rock > scissors & iguana
            <br>
