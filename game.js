@@ -9,16 +9,31 @@ class Game {
     
   }
   decideWinner() {
-    // rock > scissors
-    // paper > rock
-    // scissors > paper
-    // 
-    // rock > scissors & lizard
-    // paper > rock & alien
-    // scissors > paper & lizard
-    // lizard > paper & alien
-    // alien > scissors & rock
-  }
+    console.log(this.players[0].name, this.players[0].fighter);
+    console.log(this.players[1].name, this.players[1].fighter);
+    if (this.players[0].fighter === this.players[1].fighter) {
+      console.log(`we have a draw`);
+    } else if (this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Scissors' ||
+    this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Iguana' ||
+    this.players[0].fighter === 'Paper' && this.players[1].fighter === 'Rock' ||
+    this.players[0].fighter === 'Paper' && this.players[1].fighter === 'Alien' ||
+    this.players[0].fighter === 'Scissors' && this.players[1].fighter === 'Paper' ||
+    this.players[0].fighter === 'Scissors' && this.players[1].fighter === 'Iguana' ||
+    this.players[0].fighter === 'Iguana' && this.players[1].fighter === 'Paper' ||
+    this.players[0].fighter === 'Iguana' && this.players[1].fighter === 'Iguana' ||
+    this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Scissors' ||
+    this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Rock'
+    ) {
+      this.players[0].wins++;
+      console.log(`${this.players[0].emoji} ${this.players[0].name} WON!!!`);
+    } else {
+      this.players[1].wins++;
+      console.log(`${this.players[1].emoji} ${this.players[1].name} WON!!!`);
+
+    };
+      console.log(this.players[0].numWins);
+      console.log(this.players[1].numWins);
+  };
   resetBoard() {
     // go back to main page view with classic and difficult options (using hide?)
     // hide change game btn
@@ -26,5 +41,5 @@ class Game {
     // hide 'choose your fighter'
     // show the original game selection buttons?
     // reset the sides back to 0?
-  }
-}
+  };
+};
