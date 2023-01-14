@@ -10,9 +10,9 @@
   </head>
   <body>
     <section class="left-side">
-      <p>`${game.players[0].emoji}`</p>
-      <p>`${game.players[0].name}`</p>
-      <p>`${game.players[0].numWins}`</p>
+      <p>`${game.players[0].token}`<br>
+      `${game.players[0].name}`<br>
+      `${game.players[0].numWins}`
     </section>
     <section class="game-section">
       <section class="game-section-titles">
@@ -32,15 +32,23 @@
         </button>
         <button class="choose-game button">
           <h3>DIFFICULT <br>
-           difficult rules
+           rock > scissors & iguana
+           <br>
+           paper > rock & alien
+           <br>
+           scissors > paper & iguana
+           <br>
+           iguana > paper & alien
+           <br>
+           alien > scissors & rock
           </h3>
         </button>
       </section>
     </section>
     <section class="right-side">
-      <p>`${game.players[0].emoji}`</p>
-      <p>`${game.players[0].name}`</p>
-      <p>`${game.players[0].numWins}`</p>
+      <p>`${game.players[0].token}`<br>
+         `${game.players[0].name}`<br>
+         `${game.players[0].numWins}`<br>
     </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>

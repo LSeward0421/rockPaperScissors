@@ -9,8 +9,8 @@ class Game {
     
   }
   decideWinner() {
-    console.log(this.players[0].name, this.players[0].fighter);
-    console.log(this.players[1].name, this.players[1].fighter);
+    // console.log(this.players[0].name, this.players[0].fighter);
+    // console.log(this.players[1].name, this.players[1].fighter);
     if (this.players[0].fighter === this.players[1].fighter) {
       console.log(`we have a draw`);
     } else if (this.players[0].fighter === 'Rock' && this.players[1].fighter === 'Scissors' ||
@@ -24,11 +24,13 @@ class Game {
     this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Scissors' ||
     this.players[0].fighter === 'Alien' && this.players[1].fighter === 'Rock'
     ) {
-      this.players[0].wins++;
-      console.log(`${this.players[0].emoji} ${this.players[0].name} WON!!!`);
+      this.players[0].numWins++;
+      this.winner = this.players[0].name;
+      console.log(`${this.players[0].token} ${this.players[0].name} WON!!!`);
     } else {
-      this.players[1].wins++;
-      console.log(`${this.players[1].emoji} ${this.players[1].name} WON!!!`);
+      this.players[1].numWins++;
+      this.winner = this.players[1].name
+      console.log(`${this.players[1].token} ${this.players[1].name} WON!!!`);
 
     };
       console.log(this.players[0].numWins);
