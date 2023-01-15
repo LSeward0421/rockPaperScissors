@@ -12,6 +12,8 @@ var fighterImages = document.querySelectorAll("img");
 
 // event listeners 👇
 
+window.addEventListener('load', generatePlayerData);
+
 classicGameBtn.addEventListener("click", function () {
   startGameType("classic");
 });
@@ -69,9 +71,6 @@ function updateScoreboard() {
 generatePlayerData();
 updateScoreboard();
 
-function getHumanFighter(chosenFighter) {
-  game.players[0].fighter = chosenFighter;
-}
 
 function addListenersFighters() {
   for (var i = 0; i < fighterImages.length; i++) {
@@ -87,7 +86,7 @@ function addListenersFighters() {
 }
 
 function displayWinner() {
-  chooseFighterTitle.innerText = `${game.winner} Wins!`;
+  chooseFighterTitle.innerText = `${game.winner} wins!`;
   updateScoreboard();
   toggle(classicFighters);
   if (game.gameType === "difficult") {
@@ -100,6 +99,10 @@ function displayWinner() {
     toggle(difficultFighters);
   }
   }, 2000)
+}
+
+function getHumanFighter(chosenFighter) {
+  game.players[0].fighter = chosenFighter;
 }
 
 function getComputerFighter(gameType) {
