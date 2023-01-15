@@ -12,7 +12,10 @@ var fighterImages = document.querySelectorAll("img");
 
 // event listeners 👇
 
-window.addEventListener('load', generatePlayerData);
+window.addEventListener('load', function() {
+  generatePlayerData();
+  updateScoreboard();
+});
 
 classicGameBtn.addEventListener("click", function () {
   startGameType("classic");
@@ -68,10 +71,6 @@ function updateScoreboard() {
   player2WinsSpan.innerText = computer.numWins;
 }
 
-generatePlayerData();
-updateScoreboard();
-
-
 function addListenersFighters() {
   for (var i = 0; i < fighterImages.length; i++) {
     fighterImages[i].addEventListener("click", function (e) {
@@ -126,4 +125,3 @@ function getComputerFighter(gameType) {
     game.players[1].fighter = "Alien";
   }
 }
-
