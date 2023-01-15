@@ -51,6 +51,7 @@ p {
   font-size: xx-large;
   text-align: center;
   color: white;
+  margin-top: 50px;
 }
 
 .button {
@@ -71,10 +72,14 @@ img {
   margin: 10px;
 }
 
-#classicFighters, #difficultFighters {
-  /* display: flex; */
+img:hover {
+  background-color: chartreuse;
+  border-radius: 5px;
+}
+
+#classicFighters,
+#difficultFighters {
   height: auto;
-  /* justify-content: center; */
   margin: 20px;
 }
 
