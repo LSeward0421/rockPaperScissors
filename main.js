@@ -15,6 +15,7 @@ var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
 var classicFighters = document.getElementById("classicFighters");
 var difficultFighters = document.getElementById("difficultFighters");
 var fighterImages = document.querySelectorAll("img");
+var changeGameBtn = document.getElementById("changeGameBtn")
 
 // event listeners 👇
 
@@ -32,6 +33,10 @@ difficultGameBtn.addEventListener("click", function () {
   startGameType("difficult");
 });
 
+changeGameBtn.addEventListener("click", function() {
+  startGameType();
+})
+
 // functions 👇
 
 function randomizeInt(max) {
@@ -48,6 +53,7 @@ function generatePlayerData() {
 function startGameType(gameType) {
   game.gameType = gameType;
   toggle(chooseFighterTitle);
+  toggle(changeGameBtn)
   if (gameType === "difficult") {
     toggle(difficultFighters);
   }
