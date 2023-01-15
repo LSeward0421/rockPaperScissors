@@ -3,6 +3,12 @@
 var human = new Player({ name: "Human", emoji: "😎" });
 var computer = new Player({ name: "Computer", emoji: "👾" });
 var game = new Game();
+var player1Token = document.getElementById("player1Token");
+var player1Name = document.getElementById("player1Name");
+var player1Wins = document.getElementById("player1Wins");
+var player2Token = document.getElementById("player2Token");
+var player2Name = document.getElementById("player2Name");
+var player2Wins = document.getElementById("player2Wins");
 var classicGameBtn = document.getElementById("classicGameBtn");
 var difficultGameBtn = document.getElementById("difficultGameBtn");
 var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
@@ -15,6 +21,7 @@ var fighterImages = document.querySelectorAll("img");
 window.addEventListener('load', function() {
   generatePlayerData();
   updateScoreboard();
+  addListenersFighters()
 });
 
 classicGameBtn.addEventListener("click", function () {
@@ -24,8 +31,6 @@ classicGameBtn.addEventListener("click", function () {
 difficultGameBtn.addEventListener("click", function () {
   startGameType("difficult");
 });
-
-addListenersFighters();
 
 // functions 👇
 
@@ -56,19 +61,12 @@ function toggle(element) {
 }
 
 function updateScoreboard() {
-  var player1TokenSpan = document.getElementById("player1Token");
-  var player1NameSpan = document.getElementById("player1Name");
-  var player1WinsSpan = document.getElementById("player1Wins");
-  var player2TokenSpan = document.getElementById("player2Token");
-  var player2NameSpan = document.getElementById("player2Name");
-  var player2WinsSpan = document.getElementById("player2Wins");
-
-  player1TokenSpan.innerText = human.token;
-  player1NameSpan.innerText = human.name;
-  player1WinsSpan.innerText = human.numWins;
-  player2TokenSpan.innerText = computer.token;
-  player2NameSpan.innerText = computer.name;
-  player2WinsSpan.innerText = computer.numWins;
+  player1Token.innerText = human.token;
+  player1Name.innerText = human.name;
+  player1Wins.innerText = human.numWins;
+  player2Token.innerText = computer.token;
+  player2Name.innerText = computer.name;
+  player2Wins.innerText = computer.numWins;
 }
 
 function addListenersFighters() {
