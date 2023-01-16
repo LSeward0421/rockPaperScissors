@@ -1,67 +1,83 @@
 <!DOCTYPE html>
 <html class="html">
   <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Rock! Paper! Scissors!</title>
   </head>
   <body>
     <section class="left-side">
-      <p><span id="player1Token"></span><br>
-      <span id="player1Name"></span><br>
-      Wins: <span id="player1Wins"></span>
+      <p>
+        <span id="player1Token"></span><br />
+        <span id="player1Name"></span><br />
+        Wins: <span id="player1Wins"></span>
       </p>
+      <button class="change-game button hidden" id="changeGameBtn">Change Game</button>
     </section>
     <section class="game-section">
       <section class="game-section-titles">
         <h1>Rock, Paper, Scissors!</h1>
-        <h2 class='hidden' id="chooseFighterSubheader">Choose your fighter!!!</h2>
+        <h2 id="chooseGameTypeHeader">Choose your game 👇</h2>
+        <h2 class="hidden" id="chooseFighterSubheader">
+          Choose your fighter!
+        </h2>
+        <h2 id="finalWinnerDisplay"></h2>
       </section>
       <section class="game-section-fighters">
-        <div class="hidden" id="classicFighters">
-          <img id="Rock" src="src/happy-rocks.png" alt="Happy Rocks Image">
-          <img id="Paper" src="src/lines-paper.png" alt="Lined Paper Image">
-          <img id="Scissors" src="src/happy-scissors.png" alt="Happy Scissors Image">
+        <div id="classicFighters">
+          <img class="rock hidden" id="Rock" src="src/happy-rocks.png" alt="Happy Rocks Image" />
+          <img class="paper hidden" id="Paper" src="src/lines-paper.png" alt="Lined Paper Image" />
+          <img class="scissors hidden" id="Scissors" src="src/happy-scissors.png" alt="Happy Scissors Image"/>
         </div>
-        <div class="hidden" id="difficultFighters">
-          <img id="Iguana" src="src/iguana.png" alt="Iguana Image">
-          <img id="Alien" src="src/happy-alien.png" alt="Happy Alien Image">
+        <div id="difficultFighters">
+          <img class="iguana hidden" id="Iguana" src="src/iguana.png" alt="Iguana Image" />
+          <img class="alien hidden" id="Alien" src="src/happy-alien.png" alt="Happy Alien Image" />
         </div>
+      </section>
+      <section class="game-section-choices">
+        <div id="humanChoice"></div>
+        <div id="computerChoice"></div>
       </section>
       <section class="game-section-icons">
         <button class="choose-game button" id="classicGameBtn">
-          <h3>CLASSIC
-            <br>
+          <h3>
+            CLASSIC
+            <br />
             rock > scissors
-            <br>
+            <br />
             paper > rock
-            <br>
+            <br />
             scissors > paper
           </h3>
         </button>
         <button class="choose-game button" id="difficultGameBtn">
-          <h3>DIFFICULT <br>
-           rock > scissors & iguana
-           <br>
-           paper > rock & alien
-           <br>
-           scissors > paper & iguana
-           <br>
-           iguana > paper & alien
-           <br>
-           alien > scissors & rock
+          <h3>
+            DIFFICULT <br />
+            rock > scissors & iguana
+            <br />
+            paper > rock & alien
+            <br />
+            scissors > paper & iguana
+            <br />
+            iguana > paper & alien
+            <br />
+            alien > scissors & rock
           </h3>
         </button>
       </section>
     </section>
     <section class="right-side">
-      <p><span id="player2Token"></span><br>
-        <span id="player2Name"></span><br>
+      <p>
+        <span id="player2Token"></span><br />
+        <span id="player2Name"></span><br />
         Wins: <span id="player2Wins"></span>
-        </p>
+      </p>
     </section>
     <script src="./game.js"></script>
     <script src="./player.js"></script>

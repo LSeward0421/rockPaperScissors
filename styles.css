@@ -13,12 +13,20 @@ body {
   height: 100%;
   width: 15%;
   background-color: #5b0e82;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: column;
 }
 
 .right-side {
   height: 100%;
   width: 15%;
-  background-color: #5b0e82;;
+  background-color: #5b0e82;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: column;
 }
 
 .game-section {
@@ -34,9 +42,11 @@ body {
   height: 30%;
 }
 
-.game-section-icons {
+.game-section-icons, .game-section-choices {
   display: flex;
 }
+
+
 
 h1 {
   font-size: 10vh;
@@ -48,14 +58,15 @@ h2 {
 }
 
 p {
-  font-size: larger;
+  font-size: xx-large;
   text-align: center;
   color: white;
+  margin-top: 50px;
 }
 
 .button {
   background: aqua;
-  height: 125px;
+  height: auto;
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -63,6 +74,9 @@ p {
 
 .button:hover {
   background-color: chartreuse;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 img {
@@ -71,10 +85,14 @@ img {
   margin: 10px;
 }
 
-#classicFighters, #difficultFighters {
-  /* display: flex; */
+img:hover {
+  background-color: chartreuse;
+  border-radius: 5px;
+}
+
+#classicFighters,
+#difficultFighters {
   height: auto;
-  /* justify-content: center; */
   margin: 20px;
 }
 
