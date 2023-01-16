@@ -45,4 +45,20 @@ class Game {
     // show the original game selection buttons?
     // reset the sides back to 0?
   };
-};
+
+  checkGameOver() {
+    if (this.players[0].numWins === 3 || this.players[1].numWins === 3) {
+   console.log('Game over!')
+   return true
+  } else {
+    return false
+  }
+ };
+ getFinalWinner() {
+  if (this.players[0].numWins === 3) {
+    return this.players[0].name
+  } else {
+    return this.players[1].name
+  }
+ }
+}

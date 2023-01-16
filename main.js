@@ -40,7 +40,11 @@ difficultGameBtn.addEventListener("click", function () {
 });
 
 changeGameBtn.addEventListener("click", function() {
-  startGameType();
+  hideImages();
+  show(chooseGameTitle)
+  hide(chooseFighterTitle)
+  show(classicGameBtn);
+  show(difficultGameBtn);
 })
 
 // functions 👇
@@ -70,15 +74,22 @@ function hideImages() {
   }
 }
 
+function showImages() {
+  for (var i = 0; i < fighterImages.length; i++) {
+    show(fighterImages[i])
+  }
+}
+
 function startGameType(gameType) {
   hide(chooseGameTitle)
   game.gameType = gameType;
   toggle(chooseFighterTitle);
-  toggle(changeGameBtn)
-  if (gameType === "difficult") {
-    toggle(difficultFighters);
+  show(changeGameBtn)
+  showImages()
+  if (gameType === "classic") {
+    hide(alienImg)
+    hide(iguanaImg)
   }
-  toggle(classicFighters);
   toggle(difficultGameBtn);
   toggle(classicGameBtn);
 }
@@ -105,6 +116,9 @@ function addListenersFighters() {
       game.decideWinner();
       console.log(game);
       displayWinner();
+      if (game.checkGameOver()) {
+        console.log(game.getFinalWinner());
+      }
     });
   }
 }
@@ -139,21 +153,49 @@ function displayWinner() {
   chooseFighterTitle.innerText = `${game.winner} wins!`;
   displayChoices();
   updateScoreboard();
+  changeGameBtn.disabled = true;
+  changeGameBtn.style.cursor = 'none'
   setTimeout(function() {
-    chooseFighterTitle.innerText = `Choose your fighter!!!`
-    show(classicFighters);
-    show(rockImg);
-    show(paperImg)
-    show(scissorsImg)
-    if (game.gameType === "difficult") {
-      show(difficultFighters);
-      show(iguanaImg)
-      show(alienImg)
-      return
-    }
+    changeGameBtn.disabled = false;
+    if (game.checkGameOver()) {
+      startGameOver()
+    } else {
+   switchToFighterChoices()
+   }
   }, 3000)
 }
 
+function startGameOver() {
+  game.resetBoard();
+  updateScoreboard();
+  show(classicGameBtn)
+  show(difficultGameBtn)
+  hideImages()
+  hide(chooseFighterTitle)
+  show(chooseGameTitle)
+  hide(changeGameBtn)
+  // reset the board 
+  // update scoreboard
+  // show game type buttons
+  // hide all images
+  // show choose game title
+  // hide choose fighter 
+}
+
+function switchToFighterChoices() {
+  chooseFighterTitle.innerText = `Choose your fighter!!!`
+  changeGameBtn.style.cursor = 'pointer'
+  show(classicFighters);
+  show(rockImg);
+  show(paperImg)
+  show(scissorsImg)
+  if (game.gameType === "difficult") {
+    show(difficultFighters);
+    show(iguanaImg)
+    show(alienImg)
+    return
+  }
+}
 function displayChoices() {
   hideImages()
   for (var i = 0; i < fighterImages.length; i++) {
