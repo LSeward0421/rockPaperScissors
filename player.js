@@ -5,13 +5,9 @@ class Player {
     this.fighter = newPlayer.fighter;
     this.numWins = 0;
   }
-  // takeTurn() {
-  //   if (this.name === game.turn) {
-  //     game.turn = game.players[1].name;
-  //   } else {
-  //     game.turn = this.name;
-  //   };
-  // };
+  takeTurn(selection) {
+   this.fighter = selection;
+  };
  };
 
  

@@ -12,10 +12,16 @@ var player2Wins = document.getElementById("player2Wins");
 var classicGameBtn = document.getElementById("classicGameBtn");
 var difficultGameBtn = document.getElementById("difficultGameBtn");
 var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
+var chooseGameTitle = document.getElementById("chooseGameTypeHeader")
 var classicFighters = document.getElementById("classicFighters");
 var difficultFighters = document.getElementById("difficultFighters");
 var fighterImages = document.querySelectorAll("img");
 var changeGameBtn = document.getElementById("changeGameBtn")
+var rockImg = document.querySelector('.rock')
+var paperImg = document.querySelector('.paper')
+var scissorsImg = document.querySelector('.scissors')
+var iguanaImg = document.querySelector('.iguana')
+var alienImg = document.querySelector('.alien')
 
 // event listeners 👇
 
@@ -50,7 +56,22 @@ function generatePlayerData() {
   game.players.push(computer);
 }
 
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function show(element) {
+  element.classList.remove('hidden')
+}
+
+function hideImages() {
+  for (var i = 0; i < fighterImages.length; i++) {
+    hide(fighterImages[i])
+  }
+}
+
 function startGameType(gameType) {
+  hide(chooseGameTitle)
   game.gameType = gameType;
   toggle(chooseFighterTitle);
   toggle(changeGameBtn)
@@ -88,22 +109,6 @@ function addListenersFighters() {
   }
 }
 
-function displayWinner() {
-  chooseFighterTitle.innerText = `${game.winner} wins!`;
-  updateScoreboard();
-  toggle(classicFighters);
-  if (game.gameType === "difficult") {
-    toggle(difficultFighters);
-  }
-  setTimeout(function() {
-    chooseFighterTitle.innerText = `Choose your fighter!!!`
-    toggle(classicFighters);
-  if (game.gameType === "difficult") {
-    toggle(difficultFighters);
-  }
-  }, 2000)
-}
-
 function getHumanFighter(chosenFighter) {
   game.players[0].fighter = chosenFighter;
 }
@@ -129,3 +134,36 @@ function getComputerFighter(gameType) {
     game.players[1].fighter = "Alien";
   }
 }
+
+function displayWinner() {
+  chooseFighterTitle.innerText = `${game.winner} wins!`;
+  displayChoices();
+  updateScoreboard();
+  setTimeout(function() {
+    chooseFighterTitle.innerText = `Choose your fighter!!!`
+    show(classicFighters);
+    show(rockImg);
+    show(paperImg)
+    show(scissorsImg)
+    if (game.gameType === "difficult") {
+      show(difficultFighters);
+      show(iguanaImg)
+      show(alienImg)
+      return
+    }
+  }, 3000)
+}
+
+function displayChoices() {
+  hideImages()
+  for (var i = 0; i < fighterImages.length; i++) {
+    if (game.players[0].fighter === fighterImages[i].id) {
+     console.log(fighterImages[i], game.players[0].fighter)
+     show(fighterImages[i])
+    }
+    if (game.players[1].fighter === fighterImages[i].id) {
+      console.log(fighterImages[i], game.players[1].fighter)
+      show(fighterImages[i])
+    }
+  }
+};
