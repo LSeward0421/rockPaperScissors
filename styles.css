@@ -13,12 +13,20 @@ body {
   height: 100%;
   width: 15%;
   background-color: #5b0e82;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: column;
 }
 
 .right-side {
   height: 100%;
   width: 15%;
-  background-color: #5b0e82;;
+  background-color: #5b0e82;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  flex-direction: column;
 }
 
 .game-section {
@@ -56,15 +64,17 @@ p {
 
 .button {
   background: aqua;
-  height: 125px;
+  height: auto;
   margin: 10px;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
 .button:hover {
   background-color: chartreuse;
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 img {
