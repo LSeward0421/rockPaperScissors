@@ -42,9 +42,11 @@ body {
   height: 30%;
 }
 
-.game-section-icons {
+.game-section-icons, .game-section-choices {
   display: flex;
 }
+
+
 
 h1 {
   font-size: 10vh;

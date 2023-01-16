@@ -3,6 +3,8 @@
 var human = new Player({ name: "Human", emoji: "😎" });
 var computer = new Player({ name: "Computer", emoji: "👾" });
 var game = new Game();
+var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
+var chooseGameTitle = document.getElementById("chooseGameTypeHeader");
 var player1Token = document.getElementById("player1Token");
 var player1Name = document.getElementById("player1Name");
 var player1Wins = document.getElementById("player1Wins");
@@ -11,24 +13,25 @@ var player2Name = document.getElementById("player2Name");
 var player2Wins = document.getElementById("player2Wins");
 var classicGameBtn = document.getElementById("classicGameBtn");
 var difficultGameBtn = document.getElementById("difficultGameBtn");
-var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
-var chooseGameTitle = document.getElementById("chooseGameTypeHeader")
 var classicFighters = document.getElementById("classicFighters");
 var difficultFighters = document.getElementById("difficultFighters");
 var fighterImages = document.querySelectorAll("img");
-var changeGameBtn = document.getElementById("changeGameBtn")
-var rockImg = document.querySelector('.rock')
-var paperImg = document.querySelector('.paper')
-var scissorsImg = document.querySelector('.scissors')
-var iguanaImg = document.querySelector('.iguana')
-var alienImg = document.querySelector('.alien')
+var changeGameBtn = document.getElementById("changeGameBtn");
+var rockImg = document.querySelector(".rock");
+var paperImg = document.querySelector(".paper");
+var scissorsImg = document.querySelector(".scissors");
+var iguanaImg = document.querySelector(".iguana");
+var alienImg = document.querySelector(".alien");
+var humanChoiceImg = document.getElementById("humanChoice");
+var computerChoiceImg = document.getElementById("computerChoice");
+var finalWinnerTitle = document.getElementById("finalWinnerDisplay");
 
 // event listeners 👇
 
-window.addEventListener('load', function() {
+window.addEventListener("load", function () {
   generatePlayerData();
   updateScoreboard();
-  addListenersFighters()
+  addListenersFighters();
 });
 
 classicGameBtn.addEventListener("click", function () {
@@ -39,13 +42,8 @@ difficultGameBtn.addEventListener("click", function () {
   startGameType("difficult");
 });
 
-changeGameBtn.addEventListener("click", function() {
-  hideImages();
-  show(chooseGameTitle)
-  hide(chooseFighterTitle)
-  show(classicGameBtn);
-  show(difficultGameBtn);
-})
+changeGameBtn.addEventListener("click", changeGameView)
+
 
 // functions 👇
 
@@ -61,34 +59,34 @@ function generatePlayerData() {
 }
 
 function hide(element) {
-  element.classList.add('hidden');
+  element.classList.add("hidden");
 }
 
 function show(element) {
-  element.classList.remove('hidden')
+  element.classList.remove("hidden");
 }
 
 function hideImages() {
   for (var i = 0; i < fighterImages.length; i++) {
-    hide(fighterImages[i])
+    hide(fighterImages[i]);
   }
 }
 
 function showImages() {
   for (var i = 0; i < fighterImages.length; i++) {
-    show(fighterImages[i])
+    show(fighterImages[i]);
   }
 }
 
 function startGameType(gameType) {
-  hide(chooseGameTitle)
+  hide(chooseGameTitle);
   game.gameType = gameType;
   toggle(chooseFighterTitle);
-  show(changeGameBtn)
-  showImages()
+  show(changeGameBtn);
+  showImages();
   if (gameType === "classic") {
-    hide(alienImg)
-    hide(iguanaImg)
+    hide(alienImg);
+    hide(iguanaImg);
   }
   toggle(difficultGameBtn);
   toggle(classicGameBtn);
@@ -154,58 +152,61 @@ function displayWinner() {
   displayChoices();
   updateScoreboard();
   changeGameBtn.disabled = true;
-  changeGameBtn.style.cursor = 'none'
-  setTimeout(function() {
+  changeGameBtn.style.cursor = "none";
+  if (game.checkGameOver()) {
+    finalWinnerTitle.innerText = `Game over! ${game.getFinalWinner()} won best of 5!!!`;
+  }
+  setTimeout(function () {
     changeGameBtn.disabled = false;
+    humanChoiceImg.innerHTML = "";
+    computerChoiceImg.innerHTML = "";
+    finalWinnerTitle.innerText = "";
     if (game.checkGameOver()) {
-      startGameOver()
+      game.resetBoard();
     } else {
-   switchToFighterChoices()
-   }
-  }, 3000)
+      switchToFighterChoices();
+    }
+  }, 3000);
 }
 
-function startGameOver() {
-  game.resetBoard();
-  updateScoreboard();
-  show(classicGameBtn)
-  show(difficultGameBtn)
-  hideImages()
-  hide(chooseFighterTitle)
-  show(chooseGameTitle)
-  hide(changeGameBtn)
-  // reset the board 
-  // update scoreboard
-  // show game type buttons
-  // hide all images
-  // show choose game title
-  // hide choose fighter 
+function changeGameView() {
+  hideImages();
+  show(chooseGameTitle);
+  hide(chooseFighterTitle);
+  show(classicGameBtn);
+  show(difficultGameBtn);
 }
 
 function switchToFighterChoices() {
-  chooseFighterTitle.innerText = `Choose your fighter!!!`
-  changeGameBtn.style.cursor = 'pointer'
-  show(classicFighters);
+  chooseFighterTitle.innerText = `Choose your fighter!!!`;
+  changeGameBtn.style.cursor = "pointer";
   show(rockImg);
-  show(paperImg)
-  show(scissorsImg)
+  show(paperImg);
+  show(scissorsImg);
+
   if (game.gameType === "difficult") {
-    show(difficultFighters);
-    show(iguanaImg)
-    show(alienImg)
-    return
+    show(iguanaImg);
+    show(alienImg);
   }
 }
+
 function displayChoices() {
-  hideImages()
+  hideImages();
   for (var i = 0; i < fighterImages.length; i++) {
     if (game.players[0].fighter === fighterImages[i].id) {
-     console.log(fighterImages[i], game.players[0].fighter)
-     show(fighterImages[i])
+      console.log(fighterImages[i], game.players[0].fighter);
+      console.log("image src", fighterImages[i].getAttribute("src"));
+      humanChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
+        "src"
+      )}" alt="Human Choice Image" />`;
     }
     if (game.players[1].fighter === fighterImages[i].id) {
-      console.log(fighterImages[i], game.players[1].fighter)
-      show(fighterImages[i])
+      console.log(fighterImages[i], game.players[1].fighter);
+      console.log("image src", fighterImages[i].getAttribute("src"));
+      // show(fighterImages[i])
+      computerChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
+        "src"
+      )}" alt="Computer Choice Image" />`;
     }
   }
-};
+}
