@@ -4,6 +4,12 @@
 # App Preview 
 ![Rock, Paper, Scissors](https://media.giphy.com/media/xCZQHevwr3gqE16a13/giphy.gif)
 
+# Installation Instructions
+- Fork this project to your own Github account
+- Clone the repository to your local machine using your computers terminal
+- cd into the project
+- Type: open index.html
+
 # Technologies Used
 - JavaScript
 - HTML
