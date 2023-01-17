@@ -42,13 +42,6 @@ class Game {
   resetBoard() {
     this.players[0].numWins = 0;
     this.players[1].numWins = 0;
-    updateScoreboard();
-    show(classicGameBtn);
-    show(difficultGameBtn);
-    hideImages();
-    hide(chooseFighterTitle);
-    show(chooseGameTitle);
-    hide(changeGameBtn);
   }
 
   checkGameOver() {
