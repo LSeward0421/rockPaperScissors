@@ -42,7 +42,7 @@ difficultGameBtn.addEventListener("click", function () {
   startGameType("difficult");
 });
 
-changeGameBtn.addEventListener("click", changeGameView)
+changeGameBtn.addEventListener("click", changeGameView);
 
 
 // functions 👇
@@ -108,15 +108,10 @@ function updateScoreboard() {
 function addListenersFighters() {
   for (var i = 0; i < fighterImages.length; i++) {
     fighterImages[i].addEventListener("click", function (e) {
-      console.log(e.target.id);
       getHumanFighter(e.target.id);
       getComputerFighter(game.gameType);
       game.decideWinner();
-      console.log(game);
       displayWinner();
-      if (game.checkGameOver()) {
-        console.log(game.getFinalWinner());
-      }
     });
   }
 }
@@ -201,9 +196,6 @@ function displayChoices() {
       )}" alt="Human Choice Image" />`;
     }
     if (game.players[1].fighter === fighterImages[i].id) {
-      console.log(fighterImages[i], game.players[1].fighter);
-      console.log("image src", fighterImages[i].getAttribute("src"));
-      // show(fighterImages[i])
       computerChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
         "src"
       )}" alt="Computer Choice Image" />`;
