@@ -93,6 +93,8 @@ img:hover {
 
 #classicFighters,
 #difficultFighters {
+  display: flex;
+  justify-content: center;
   height: auto;
   margin: 20px;
 }

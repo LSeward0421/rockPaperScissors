@@ -3,6 +3,7 @@
 var human = new Player({ name: "Human", emoji: "😎" });
 var computer = new Player({ name: "Computer", emoji: "👾" });
 var game = new Game();
+
 var chooseFighterTitle = document.getElementById("chooseFighterSubheader");
 var chooseGameTitle = document.getElementById("chooseGameTypeHeader");
 var player1Token = document.getElementById("player1Token");
@@ -31,7 +32,7 @@ var finalWinnerTitle = document.getElementById("finalWinnerDisplay");
 window.addEventListener("load", function () {
   generatePlayerData();
   updateScoreboard();
-  addListenersFighters();
+  playOneRound();
 });
 
 classicGameBtn.addEventListener("click", function () {
@@ -47,35 +48,9 @@ changeGameBtn.addEventListener("click", changeGameView);
 
 // functions 👇
 
-function randomizeInt(max) {
-  min = Math.ceil(1);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
 function generatePlayerData() {
   game.players.push(human);
   game.players.push(computer);
-}
-
-function hide(element) {
-  element.classList.add("hidden");
-}
-
-function show(element) {
-  element.classList.remove("hidden");
-}
-
-function hideImages() {
-  for (var i = 0; i < fighterImages.length; i++) {
-    hide(fighterImages[i]);
-  }
-}
-
-function showImages() {
-  for (var i = 0; i < fighterImages.length; i++) {
-    show(fighterImages[i]);
-  }
 }
 
 function startGameType(gameType) {
@@ -84,36 +59,14 @@ function startGameType(gameType) {
   toggle(chooseFighterTitle);
   show(changeGameBtn);
   showImages();
+
   if (gameType === "classic") {
     hide(alienImg);
     hide(iguanaImg);
   }
+
   toggle(difficultGameBtn);
   toggle(classicGameBtn);
-}
-
-function toggle(element) {
-  element.classList.toggle("hidden");
-}
-
-function updateScoreboard() {
-  player1Token.innerText = human.token;
-  player1Name.innerText = human.name;
-  player1Wins.innerText = human.numWins;
-  player2Token.innerText = computer.token;
-  player2Name.innerText = computer.name;
-  player2Wins.innerText = computer.numWins;
-}
-
-function addListenersFighters() {
-  for (var i = 0; i < fighterImages.length; i++) {
-    fighterImages[i].addEventListener("click", function (e) {
-      getHumanFighter(e.target.id);
-      getComputerFighter(game.gameType);
-      game.decideWinner();
-      displayWinner();
-    });
-  }
 }
 
 function getHumanFighter(chosenFighter) {
@@ -142,26 +95,62 @@ function getComputerFighter(gameType) {
   }
 }
 
+function playOneRound() {
+  for (var i = 0; i < fighterImages.length; i++) {
+    fighterImages[i].addEventListener("click", function (e) {
+      getHumanFighter(e.target.id);
+      getComputerFighter(game.gameType);
+      game.decideWinner();
+      displayWinner();
+    });
+  }
+}
+
+function displayPlayerChoices() {
+  hideImages();
+  for (var i = 0; i < fighterImages.length; i++) {
+    if (game.players[0].fighter === fighterImages[i].id) {
+      humanChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
+        "src")}" alt="Human Choice Image" />`;
+    }
+    if (game.players[1].fighter === fighterImages[i].id) {
+      computerChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
+        "src")}" alt="Computer Choice Image" />`;
+    }
+  }
+}
+
+function updateScoreboard() {
+  player1Token.innerText = human.token;
+  player1Name.innerText = human.name;
+  player1Wins.innerText = human.numWins;
+  player2Token.innerText = computer.token;
+  player2Name.innerText = computer.name;
+  player2Wins.innerText = computer.numWins;
+}
+
 function displayWinner() {
   chooseFighterTitle.innerText = `${game.winner} wins!`;
-  displayChoices();
+  displayPlayerChoices();
   updateScoreboard();
   changeGameBtn.disabled = true;
   changeGameBtn.style.cursor = "none";
+
   if (game.checkGameOver()) {
     finalWinnerTitle.innerText = `Game over! ${game.getFinalWinner()} won best of 5!!!`;
   }
+
   setTimeout(function () {
     changeGameBtn.disabled = false;
     humanChoiceImg.innerHTML = "";
     computerChoiceImg.innerHTML = "";
     finalWinnerTitle.innerText = "";
+
     if (game.checkGameOver()) {
       game.resetBoard();
     } else {
       switchToFighterChoices();
-    }
-  }, 3000);
+    }}, 3000);
 }
 
 function changeGameView() {
@@ -185,20 +174,32 @@ function switchToFighterChoices() {
   }
 }
 
-function displayChoices() {
-  hideImages();
+function hide(element) {
+  element.classList.add("hidden");
+}
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hideImages() {
   for (var i = 0; i < fighterImages.length; i++) {
-    if (game.players[0].fighter === fighterImages[i].id) {
-      console.log(fighterImages[i], game.players[0].fighter);
-      console.log("image src", fighterImages[i].getAttribute("src"));
-      humanChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
-        "src"
-      )}" alt="Human Choice Image" />`;
-    }
-    if (game.players[1].fighter === fighterImages[i].id) {
-      computerChoiceImg.innerHTML = `<img src="${fighterImages[i].getAttribute(
-        "src"
-      )}" alt="Computer Choice Image" />`;
-    }
+    hide(fighterImages[i]);
   }
+}
+
+function showImages() {
+  for (var i = 0; i < fighterImages.length; i++) {
+    show(fighterImages[i]);
+  }
+}
+
+function toggle(element) {
+  element.classList.toggle("hidden");
+}
+
+function randomizeInt(max) {
+  min = Math.ceil(1);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
 }
