@@ -137,7 +137,7 @@ function displayWinner() {
   changeGameBtn.style.cursor = "none";
 
   if (game.checkGameOver()) {
-    finalWinnerTitle.innerText = `Game over! ${game.getFinalWinner()} won best of 5!!!`;
+    finalWinnerTitle.innerText = `Game over! ${game.getFinalWinner()} won best of 5!`;
   }
 
   setTimeout(function () {
@@ -147,7 +147,7 @@ function displayWinner() {
     finalWinnerTitle.innerText = "";
 
     if (game.checkGameOver()) {
-      game.resetBoard();
+      gameOverResetBoard();
     } else {
       switchToFighterChoices();
     }}, 3000);
@@ -172,6 +172,17 @@ function switchToFighterChoices() {
     show(iguanaImg);
     show(alienImg);
   }
+}
+
+function gameOverResetBoard() {
+  game.resetBoard();
+  updateScoreboard();
+  show(classicGameBtn);
+  show(difficultGameBtn);
+  hideImages();
+  hide(chooseFighterTitle);
+  show(chooseGameTitle);
+  hide(changeGameBtn);
 }
 
 function hide(element) {
