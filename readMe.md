@@ -1,5 +1,5 @@
 # Abstract
-**Rock! Paper! Scissors! GO!** This application allows the user to play against the computer for a 'classic' game of Rock 🪨, Paper 📝, Scissors ✂️ AND a 'difficult' version with an Iguana 🦎 and Alien 👽. The user can switch between games during a single round without resetting the scores. The game will reset once a final winner is determined (best of 5). 
+**Rock! Paper! Scissors! GO!** [THIS](https://lseward0421.github.io/rockPaperScissors/) application allows the user to play against the computer for a 'classic' game of Rock 🪨, Paper 📝, Scissors ✂️ AND a 'difficult' version with an Iguana 🦎 and Alien 👽. The user can switch between games during a single round without resetting the scores. The game will reset once a final winner is determined (best of 5). 
 
 # App Preview 
 ![Rock, Paper, Scissors](https://media.giphy.com/media/xCZQHevwr3gqE16a13/giphy.gif)
